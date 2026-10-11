@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Farmhouse Kerala | Thrissur</title>
+    <meta
+      name="description"
+      content="Farmhouse Kerala is a family farm in Thrissur offering organic produce, farm experiences, and fresh harvests from the heart of God's Own Country."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="navbar container">
+        <div class="brand">
+          <span class="brand-mark">F</span>
+          <div>
+            <strong>Farmhouse</strong>
+            <small>Thrissur, Kerala</small>
+          </div>
+        </div>
+
+        <button class="menu-toggle" aria-label="Open menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="nav-links">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#products">Products</a>
+          <a href="#experience">Experience</a>
+          <a href="#visit">Visit</a>
+        </div>
+
+        <div class="nav-actions">
+          <div id="userMenuWrapper" class="user-menu-wrapper">
+            <button id="loginTrigger" class="btn btn-primary nav-login" type="button">Login</button>
+            <div id="userDropdown" class="user-dropdown hidden" role="menu" aria-label="User menu">
+              <a href="profile.html" class="dropdown-item" role="menuitem">Profile</a>
+              <button id="logoutBtnHeader" type="button" class="dropdown-item dropdown-logout" role="menuitem">Logout</button>
+            </div>
+          </div>
+          <a class="btn btn-primary nav-cta" href="#visit">Book a Visit</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+          <div class="hero-text">
+            <p class="eyebrow">Fresh from the heart of Kerala</p>
+            <h1>Nature, harvest, and family tradition in Thrissur.</h1>
+            <p class="subtitle">
+              We grow wholesome fruits, vegetables, spices, and coconut products in a peaceful farmhouse setting inspired by the richness of Kerala's soil.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#products">Explore Products</a>
+              <a class="btn btn-secondary" href="#about">Our Story</a>
+            </div>
+            <ul class="hero-highlights">
+              <li>100% natural farming</li>
+              <li>Seasonal harvests</li>
+              <li>Family-grown goodness</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section intro">
+        <div class="container two-column">
+          <div>
+            <p class="section-tag">About our farm</p>
+            <h2>Rooted in tradition, growing for a healthier tomorrow.</h2>
+          </div>
+          <div>
+            <p>
+              Located in the lush landscapes of Thrissur, our farm combines traditional Kerala farming practices with modern sustainable methods. We grow fresh produce with care, respect for the land, and a deep connection to the seasons.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="products" class="section products">
+        <div class="container">
+          <div class="section-heading">
+            <p class="section-tag">Fresh farm products</p>
+            <h2>Choose your farm order</h2>
+          </div>
+
+          <div class="card-grid">
+            <article class="product-card">
+              <div class="icon">🥚</div>
+              <h3>Fresh Eggs</h3>
+              <p>Natural free-range eggs collected daily from healthy birds raised in a clean farm environment.</p>
+              <button class="btn btn-primary product-book-btn" data-product="Fresh Eggs" type="button">Book Eggs</button>
+            </article>
+
+            <article class="product-card">
+              <div class="icon">🍯</div>
+              <h3>Pure Honey</h3>
+              <p>Raw, fragrant honey harvested with care from local flowers and forest blossoms.</p>
+              <button class="btn btn-primary product-book-btn" data-product="Pure Honey" type="button">Book Honey</button>
+            </article>
+
+            <article class="product-card">
+              <div class="icon">🏡</div>
+              <h3>Farmhouse Visit</h3>
+              <p>Plan a guided farm visit to experience Kerala agriculture, nature walks, and local traditions.</p>
+              <button class="btn btn-primary product-book-btn" data-product="Farmhouse Visit" type="button">Book Visit</button>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience" class="section experience">
+        <div class="container">
+          <div class="section-heading">
+            <p class="section-tag">Farm experience</p>
+            <h2>More than a farm — a Kerala countryside experience</h2>
+          </div>
+
+          <div class="feature-list">
+            <div class="feature-item">
+              <h3>Organic practices</h3>
+              <p>Healthy soil, natural methods, and sustainable care in every step of cultivation.</p>
+            </div>
+            <div class="feature-item">
+              <h3>Farm visits</h3>
+              <p>Visitors can explore the fields, learn about cultivation, and enjoy the local farm atmosphere.</p>
+            </div>
+            <div class="feature-item">
+              <h3>Fresh local produce</h3>
+              <p>Enjoy direct-from-farm harvests packed with freshness, flavor, and authenticity.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section testimonial">
+        <div class="container quote-box">
+          <p>
+            “Our farm reflects the calm beauty of Kerala — rich land, honest work, and nourishing produce that brings families together.”
+          </p>
+          <span>— Family-run farm in Thrissur</span>
+        </div>
+      </section>
+
+      <section id="visit" class="section visit">
+        <div class="container visit-grid">
+          <div>
+            <p class="section-tag">Visit us</p>
+            <h2>Come see the farm in Thrissur</h2>
+            <p>
+              Discover the beauty of village life, taste fresh farm produce, and experience the serenity of Kerala's countryside.
+            </p>
+            <div class="visit-details">
+              <p><strong>Location:</strong> Thrissur, Kerala</p>
+              <p><strong>Hours:</strong> 8:00 AM – 6:00 PM</p>
+              <p><strong>Contact:</strong> +91 98765 43210</p>
+            </div>
+          </div>
+
+          <form class="contact-card">
+            <h3>Plan your visit</h3>
+            <input type="text" placeholder="Your name" />
+            <input type="email" placeholder="Email address" />
+            <textarea placeholder="Tell us about your visit"></textarea>
+            <button type="submit" class="btn btn-primary">Send Enquiry</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© <span id="year"></span> Farmhouse Kerala</p>
+        <p>Thrissur, God's Own Country</p>
+      </div>
+    </footer>
+
+    <div id="authModal" class="auth-modal hidden" aria-hidden="true">
+      <div class="auth-backdrop" data-close="true"></div>
+      <div class="auth-card" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+        <button class="close-auth" type="button" aria-label="Close login dialog">×</button>
+        <p class="section-tag auth-tag">Welcome</p>
+        <h3 id="authTitle">Login to Farmhouse</h3>
+
+        <div class="auth-panel active">
+          <button id="googleLoginBtn" class="btn btn-google full-width" type="button">
+            <span class="google-icon">G</span>
+            Continue with Google
+          </button>
+          <p id="googleStatus" class="auth-status">Use your Google account to sign in securely.</p>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

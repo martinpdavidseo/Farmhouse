@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Profile | Farmhouse Kerala</title>
+    <meta
+      name="description"
+      content="Your profile page for booking eggs, honey, and farm visits from Farmhouse Kerala in Thrissur."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="profile">
+    <header class="site-header">
+      <nav class="navbar container">
+        <div class="brand">
+          <span class="brand-mark">F</span>
+          <div>
+            <strong>Farmhouse</strong>
+            <small>Thrissur, Kerala</small>
+          </div>
+        </div>
+
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="index.html#products">Products</a>
+          <a href="index.html#visit">Visit</a>
+        </div>
+
+        <div class="nav-actions">
+          <a href="index.html" class="btn btn-primary nav-login">Back to Home</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="profile-shell">
+      <div class="profile-header">
+        <img id="profileAvatar" class="profile-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80" alt="Google profile" />
+        <div>
+          <p class="section-tag">Profile</p>
+          <h1>My account</h1>
+          <span id="selectedProduct" class="profile-badge">Selected booking: Farm product</span>
+        </div>
+      </div>
+
+      <form id="profileForm" class="profile-card">
+        <div class="field-grid">
+          <div class="field">
+            <label for="googleFullName">Google name</label>
+            <input id="googleFullName" type="text" disabled />
+          </div>
+
+          <div class="field">
+            <label for="googleEmail">Google email</label>
+            <input id="googleEmail" type="email" disabled />
+          </div>
+
+          <div class="field">
+            <label for="profilePhone">Mobile number</label>
+            <input id="profilePhone" type="tel" placeholder="Enter your mobile number" />
+          </div>
+
+          <div class="field" style="grid-column: 1 / -1;">
+            <label for="profileAddress">Address</label>
+            <input id="profileAddress" type="text" placeholder="House name / street / area" />
+          </div>
+
+          <div class="field">
+            <label for="profileCity">City</label>
+            <input id="profileCity" type="text" placeholder="Thrissur" />
+          </div>
+
+          <div class="field">
+            <label for="profileState">State</label>
+            <input id="profileState" type="text" placeholder="Kerala" />
+          </div>
+
+          <div class="field">
+            <label for="profilePincode">Pincode</label>
+            <input id="profilePincode" type="text" placeholder="680001" />
+          </div>
+
+          <div class="field" style="grid-column: 1 / -1;">
+            <label for="profileNotes">Additional notes</label>
+            <textarea id="profileNotes" placeholder="Let us know your preferred delivery date, visit timing, or order details."></textarea>
+          </div>
+        </div>
+
+        <div class="profile-actions">
+          <button type="submit" class="btn btn-primary">Save profile</button>
+          <button id="logoutBtn" type="button" class="btn btn-primary">Logout</button>
+        </div>
+
+        <p id="profileStatus" class="profile-notice">Your Google details stay locked, and the rest of your profile is editable.</p>
+      </form>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
