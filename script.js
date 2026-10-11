@@ -63,16 +63,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const supabase = useSupabase ? window.supabase.createClient(supabaseUrl, supabaseAnonKey) : null;
 
-  function getSavedProfile() {
+  function getSavedProfile(userId) {
+    if (!userId) return {};
+
     try {
-      return JSON.parse(localStorage.getItem(PROFILE_STORAGE_KEY) || '{}');
+      return JSON.parse(localStorage.getItem(`${PROFILE_STORAGE_KEY}:${userId}`) || '{}');
     } catch (error) {
       return {};
     }
   }
 
-  function saveProfile(profile) {
-    localStorage.setItem(PROFILE_STORAGE_KEY, JSON.stringify(profile));
+  function saveProfile(userId, profile) {
+    if (!userId) return;
+    localStorage.setItem(`${PROFILE_STORAGE_KEY}:${userId}`, JSON.stringify(profile));
   }
 
   function setGoogleStatus(message, isError = false) {
@@ -223,15 +226,6 @@ document.addEventListener('DOMContentLoaded', () => {
     supabase.auth.onAuthStateChange((event, session) => {
       if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
         displayUserFromSession(session);
-        const savedProfile = getSavedProfile();
-        if (savedProfile.googleName) {
-          saveProfile({
-            ...savedProfile,
-            googleName: savedProfile.googleName,
-            googleEmail: savedProfile.googleEmail,
-            googleAvatar: savedProfile.googleAvatar,
-          });
-        }
       }
 
       if (event === 'SIGNED_OUT') {
@@ -276,14 +270,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function saveProfileToSupabase(profileData) {
     if (!supabase) {
-      saveProfile(profileData);
       return;
     }
 
     const { data: { user }, error: userError } = await supabase.auth.getUser();
     if (userError || !user) {
       console.error('No active user session for Supabase profile save.', userError?.message || 'Unknown error');
-      saveProfile(profileData);
       return;
     }
 
@@ -305,17 +297,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const { error } = await supabase.from('profiles').upsert(payload, { onConflict: 'id' });
     if (error) {
       console.error('Supabase profile save failed:', error.message);
-      saveProfile(profileData);
+      saveProfile(user.id, profileData);
       return;
     }
 
-    saveProfile(profileData);
+    saveProfile(user.id, profileData);
   }
 
   function populateProfilePage(user, savedProfile = null) {
     if (!profileForm) return;
 
-    const data = savedProfile || getSavedProfile();
+    const data = savedProfile || getSavedProfile(user?.id);
     const nameValue = user?.user_metadata?.full_name || user?.user_metadata?.name || data.googleName || 'Google user';
     const emailValue = user?.email || data.googleEmail || '';
     const avatarUrl = user?.user_metadata?.avatar_url || data.googleAvatar || 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80';
@@ -366,7 +358,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    const savedProfile = getSavedProfile();
+    const savedProfile = getSavedProfile(user.id);
     const dbProfile = await loadProfileFromSupabase(user);
     const profileData = {
       googleName: user.user_metadata?.full_name || user.user_metadata?.name || dbProfile?.google_name || savedProfile.googleName || 'Google user',
@@ -380,7 +372,7 @@ document.addEventListener('DOMContentLoaded', () => {
       notes: dbProfile?.notes || savedProfile.notes || '',
     };
 
-    saveProfile({
+    saveProfile(user.id, {
       ...savedProfile,
       ...profileData,
     });
